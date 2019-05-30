@@ -1,0 +1,73 @@
+<!--pages/h2-order/list-order/list-order.wxml-->
+<guide id="inGuide" />
+
+<view class='page'>
+  <view class='page_bd'>
+
+    <wux-row>
+      <picker mode="date" value="{{date}}" bindchange="bindDateChange">
+        <view class='picker'>
+          <view></view>
+          <view>{{date?date:'选择用工日期'}}</view>
+          <view>
+            <wux-icon type='md-arrow-dropdown' />
+          </view>
+        </view>
+      </picker>
+    </wux-row>
+
+    <!-- 已发布 -->
+    <block wx:for="{{order_list}}" wx:key="">
+      <wux-white-space body-style="height:30rpx" />
+      <view class="card {{item.modifiedorder.length>0?'card_shadow_r':''}}">
+        <view class='card_p_hd' bindtap='goOrderInfo' data-orderid='{{item.originorder.orderid}}'>
+          <view class='card_p_hd_img'>
+            <image src='{{item.avatar}}' />
+            <view class='card_hd_job'>{{item.originorder.occupation||'occupation'}}</view>
+          </view>
+          <view class='card_p_hd_link b200'>
+            <text class='card_p_hd_link_text'>订单详情</text>
+            <wux-icon type="ios-arrow-forward" size='20' />
+          </view>
+        </view>
+        <view class='card_p_bd' bindtap='goOrderDetail' data-orderid='{{item.originorder.orderid}}'>
+          <view class='card_p_bd_date'>
+            <view>
+              <text class='card_bd_date'>{{item.modifiedorder[0].date||item.originorder.date||'origindate'}}</text>
+              <text>{{item.modifiedorder[0].time||item.originorder.time||'origintime'}}</text>
+            </view>
+            <view class='r200'>
+              <text wx:if="{{item.modifiedorder.length>0&&item.modifiedorder[0].time!==item.originorder.time}}">时间变更</text>
+            </view>
+          </view>
+          <wux-white-space body-style="height:20rpx" />
+          <view class='card_p_bd_count b200'>
+            <view>
+              <view wx:if="{{item.modifiedorder.length>0?(item.modifiedorder[0].changedmode===0):(item.originorder.mode===0)}}">
+                <text>人数 {{item.countyet||0}}/{{item.modifiedorder[0].changedcount||item.originorder.count||0}}</text>
+              </view>
+              <view wx:else>
+                <text class='blank_male'>男 {{item.maleyet||0}}/{{item.modifiedorder[0].changedmale||item.originorder.male||0}}</text>
+                <text>女 {{item.femaleyet||0}}/{{item.modifiedorder[0].changedfemale||item.originorder.female||0}}</text>
+              </view>
+            </view>
+            <view class='r200'>
+              <text wx:if="{{item.modifiedorder.length>0&&(item.originorder.count!==item.modifiedorder[0].changedcount||item.originorder.male!==item.modifiedorder[0].changedmale||item.originorder.female!==item.modifiedorder[0].changedfemale)}}">人数变更</text>
+            </view>
+          </view>
+          <wux-white-space body-style="height:20rpx" />
+          <view class='card_p_bd_salary'>
+            <text>{{item.postorder.salary}}元/小时</text>
+            <text class='n200'>{{item.hotel.hotelname||'hotelname'}}</text>
+          </view>
+        </view>
+        <view class='card_p_ft'>
+          <wux-button type='main' bindtap='jumpToPt' data-orderid='{{item.originorder.orderid}}'>
+            <view class='text_btn'>分享给PT</view>
+          </wux-button>
+        </view>
+      </view>
+    </block>
+
+  </view>
+</view>

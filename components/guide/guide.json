@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "wux-white-space": "wux-weapp/white-space",
+    "wux-button": "wux-weapp/button",
+    "wux-icon": "wux-weapp/icon"
+  }
+}

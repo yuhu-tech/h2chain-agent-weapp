@@ -1,0 +1,68 @@
+<!--pages/h2-order/share/share.wxml-->
+<view class="page">
+
+  <view class='page_hd'>
+    <swiper indicator-dots autoplay indicator-color="rgba(255, 255, 255, .3)" indicator-active-color="#fff">
+      <block wx:for="{{order.hotel.cover}}" wx:key="index">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" />
+        </swiper-item>
+      </block>
+    </swiper>
+
+    <view class='card'>
+      <view class='card_line_1'>
+        <image src="{{avatar||'/images/avatar-waiter.jpeg'}}" />
+        <text>{{order.originorder.occupation||'occupation'}}</text>
+      </view>
+      <wux-white-space body-style='height:20rpx' />
+      <view class='n200' wx:if="{{order.modifiedorder.length>0}}">
+        <view class='card_line_2'>
+          <view>
+            <text>{{order.originorder.date||'date'}}</text>
+            <text class='blank'>{{order.originorder.time||'time'}}</text>
+          </view>
+          <view wx:if="{{order.originorder.mode===0}}">
+            <text>{{order.countyet||'0'}}/{{order.originorder.count||'0'}}</text>
+          </view>
+          <view wx:else>
+            <text>{{order.maleyet||'0'}}/{{order.originorder.male||'0'}} 男</text>
+            <text class='blank'>{{order.femaleyet||'0'}}/{{order.originorder.female||'0'}} 女</text>
+          </view>
+          <view class='top_card_cen_bd' />
+        </view>
+        <wux-white-space body-style="height:20rpx" />
+      </view>
+
+      <view class='card_line_2'>
+        <view>
+          <text>{{order.modifiedorder[0].date||order.originorder.date||'date'}}</text>
+          <text class='blank'>{{order.modifiedorder[0].time||order.originorder.time||'time'}}</text>
+        </view>
+        <view>
+          <view wx:if="{{order.modifiedorder.length>0?(order.modifiedorder[0].changedmode===0):(order.originorder.mode===0)}}">
+            <text>{{order.countyet||'0'}}/{{order.modifiedorder[0].changedcount||order.originorder.count||'0'}}</text>
+          </view>
+          <view wx:else>
+            <text>{{order.maleyet||'0'}}/{{order.modifiedorder[0].changedmale||order.originorder.male||'0'}} 男</text>
+            <text class='blank'>{{order.femaleyet||'0'}}/{{order.modifiedorder[0].changedfemale||order.originorder.female||'0'}} 女</text>
+          </view>
+        </view>
+      </view>
+
+      <wux-white-space body-style='height:20rpx' />
+      <view class='card_line_3'>
+        <text>薪资</text>
+        <text>{{order.postorder.salary||'0'}}元/小时</text>
+      </view>
+      <wux-white-space body-style='height:20rpx' />
+    </view>
+  </view>
+
+  <view class='page_ft'>
+    <wux-button type='main' open-type='share'>
+      <view class='text_btn'>分享</view>
+    </wux-button>
+    <wux-white-space body-style='height:100rpx' />
+  </view>
+</view>

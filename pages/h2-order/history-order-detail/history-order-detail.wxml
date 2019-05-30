@@ -1,0 +1,139 @@
+<!--pages/h2-order/history-order-detail/history-order-detail.wxml-->
+<view class='page'>
+  <view class='page_bd'>
+
+    <wux-row>
+      <view class='top_card'>
+        <view class='top_card_top'>
+          <image src='{{avatar}}' />
+          <view>{{order_info.originorder.occupation}}</view>
+        </view>
+
+        <view class='modified' wx:if="{{order_info.modifiedorder.length>0}}">
+          <wux-white-space body-style="height:10rpx" />
+          <view class='top_card_cen'>
+            <view>
+              <text>{{order_info.originorder.date}}</text>
+              <text class='blank'>{{order_info.originorder.time}}</text>
+            </view>
+            <view wx:if="{{order_info.originorder.mode===0}}">
+              <text>{{order_info.countyet}}/{{order_info.originorder.count}}</text>
+            </view>
+            <view wx:else>
+              <text>{{order_info.maleyet}}/{{order_info.originorder.male}} 男</text>
+              <text class='blank'>{{order_info.femaleyet}}/{{order_info.originorder.female}} 女</text>
+            </view>
+            <view class='top_card_cen_bd' />
+          </view>
+        </view>
+
+        <wux-white-space body-style="height:20rpx" />
+        <view class='top_card_cen'>
+
+          <view>
+            <text>{{order_info.modifiedorder[0].date||order_info.originorder.date}}</text>
+            <text class='blank'>{{order_info.modifiedorder[0].time||order_info.originorder.time}}</text>
+          </view>
+          <view wx:if="{{order_info.modifiedorder.length>0?(order_info.modifiedorder[0].changedmode===0):(order_info.originorder.mode===0)}}">
+            <text>{{order_info.countyet}}/{{order_info.modifiedorder[0].changedcount||order_info.originorder.count}}</text>
+          </view>
+          <view wx:else>
+            <text>{{order_info.maleyet}}/{{order_info.modifiedorder[0].changedmale||order_info.originorder.male}} 男</text>
+            <text class='blank'>{{order_info.femaleyet}}/{{order_info.modifiedorder[0].changedfemale||order_info.originorder.female}} 女</text>
+          </view>
+
+        </view>
+
+
+        <wux-white-space body-style="height:20rpx" />
+        <view class='top_card_btm text_min'>
+          <view class='top_card_btm_name'>{{order_info.hotel.hotelname}}</view>
+          <view>{{order_info.postorder.salary}}元/小时</view>
+        </view>
+      </view>
+    </wux-row>
+
+    <!-- search bar -->
+    <wux-row>
+      <view class='search_bar'>
+        <!-- <view class='search'>
+          <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+            <view class='picker'>
+              <view></view>
+              <view>{{regMode?regMode:'报名渠道'}}</view>
+              <view class='picker_icon'>
+                <wux-icon type='md-arrow-dropdown' />
+              </view>
+            </view>
+          </picker>
+        </view> -->
+        <view class='search n200'>
+          <input confirm-type='search' placeholder='输入姓名昵称' placeholder-class='search_p' bindconfirm='doSearch' bindinput='doSearch' />
+        </view>
+      </view>
+    </wux-row>
+
+    <!-- pt list -->
+    <block wx:for="{{pt_list}}" wx:key="">
+      <wux-row>
+        <view class='list'>
+          <view class='list_card'>
+            <view class='list_card_top'>
+              <view class='list_card_l'>
+                <image class='list_card_avatar' src='{{avatar}}' />
+                <view>
+                  <view class='list_card_l_top'>
+                    <text class='list_card_l_top_name'>{{item.name}}</text>
+                    <view class='list_card_l_top_name_phone' bindtap='doCall' data-number='{{item.phonenumber}}'>
+                      <image src='/images/order-phone.png'></image>
+                      <text class='b200'>立刻联系</text>
+                    </view>
+                  </view>
+                  <wux-white-space body-style="height:10rpx" />
+                  <view class='list_card_l_btm text_min n200'>
+                    <text>{{item.gender===1?'男':'女'}}</text>
+                    <text class='list_card_l_btm_blank'>{{item.height||'--'}}cm</text>
+                    <text class='list_card_l_btm_blank'>{{item.weight||'--'}}kg</text>
+                    <!-- <text class='list_card_l_btm_blank'>24岁</text>
+                    <text>这里显示微信昵称</text> -->
+                  </view>
+                </view>
+              </view>
+              <view class='list_card_r n200' bindtap='goPtInfo' data-item='{{item}}'>
+                <view class='link_arrow'>
+                  <wux-icon type="ios-arrow-forward" size='20' />
+                </view>
+              </view>
+            </view>
+            <view class='list_card_btm'>
+              <view class='list_card_btm_top'>
+                <text>工作次数：{{item.worktimes}}次</text>
+                <text>工作时常：{{item.workhours}}小时</text>
+                <!-- <text>用户端报名</text> -->
+              </view>
+              <wux-white-space body-style="height:20rpx" />
+              <view class='list_card_btm_btm_btn' wx:if="{{item.remark===null}}">
+                <wux-button type='main' outline bind:click="doNote" data-item='{{item}}'>
+                  <view class='text_btn'>用工备注</view>
+                </wux-button>
+              </view>
+              <view class='list_card_btm_btm_remark' wx:else>
+                <text wx:if="{{item.remark.isworked===2}}">未参加工作</text>
+                <text wx:else>工作时间：{{item.duration}} 薪酬：{{item.remark.realsalary}}</text>
+                <text class='b200' bindtap='doNote' data-item='{{item}}'>编辑</text>
+              </view>
+            </view>
+            <navigator class='list_card_btm_btm_chain b200' url='/pages/h2-order/chain-info/chain-info?hash={{item.hash}}'>
+              <text>查询凭证：{{item.hash}}</text>
+            </navigator>
+          </view>
+          <wux-white-space body-style="height:30rpx" />
+        </view>
+      </wux-row>
+    </block>
+    <view class='n200 none_tip' wx:if="{{!pt_list.length>0}}">
+      未有报名信息
+    </view>
+
+  </view>
+</view>

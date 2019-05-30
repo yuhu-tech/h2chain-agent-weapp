@@ -1,0 +1,37 @@
+/* components/guide/guide.wxss */
+
+/* 遮罩层 */
+
+.mask-box {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 99999;
+}
+
+.mask {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5) !important;
+  -webkit-clip-path: polygon(0% 0%, 0% 100%, 2% 100%, 2% 1%, 98% 1%, 98% 55px, 2% 55px, 2% 100%, 100% 100%, 100% 0%);
+  clip-path: polygon(0% 0%, 0% 100%, 2% 100%, 2% 1%, 98% 1%, 98% 55px, 2% 55px, 2% 100%, 100% 100%, 100% 0%);
+}
+
+/* cont */
+
+.cont {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+}
+
+.text_btn {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

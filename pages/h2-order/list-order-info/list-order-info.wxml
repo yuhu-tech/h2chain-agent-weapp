@@ -1,0 +1,102 @@
+<!--pages/h2-order/list-order-info/list-order-info.wxml-->
+<view class="page">
+  <view class="page__bd">
+
+    <swiper indicator-dots autoplay indicator-color="rgba(255, 255, 255, .3)" indicator-active-color="#fff">
+      <block wx:for="{{order.hotel.cover}}" wx:key="index">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" />
+        </swiper-item>
+      </block>
+    </swiper>
+
+    <view class='card'>
+      <view class='card_line_1'>
+        <image src='{{avatar}}' />
+        <text>{{order.originorder.occupation}}</text>
+      </view>
+      <wux-white-space body-style='height:20rpx' />
+
+      <view class='n200' wx:if="{{order.modifiedorder.length>0}}">
+        <view class='card_line_2'>
+          <view>
+            <text>{{order.originorder.date}}</text>
+            <text class='blank'>{{order.originorder.time}}</text>
+          </view>
+          <view wx:if="{{order.originorder.mode===0}}">
+            <text>{{order.countyet}}/{{order.originorder.count}}</text>
+          </view>
+          <view wx:else>
+            <text>{{order.maleyet}}/{{order.originorder.male}} 男</text>
+            <text class='blank'>{{order.femaleyet}}/{{order.originorder.female}} 女</text>
+          </view>
+          <view class='top_card_cen_bd' />
+        </view>
+        <wux-white-space body-style="height:20rpx" />
+      </view>
+
+      <view class='card_line_2'>
+
+        <view>
+          <text>{{order.modifiedorder[0].date||order.originorder.date}}</text>
+          <text class='blank'>{{order.modifiedorder[0].time||order.originorder.time}}</text>
+        </view>
+        <view>
+          <view wx:if="{{order.modifiedorder.length>0?(order.modifiedorder[0].changedmode===0):(order.originorder.mode===0)}}">
+            <text>{{order.countyet}}/{{order.modifiedorder[0].changedcount||order.originorder.count}}</text>
+          </view>
+          <view wx:else>
+            <text>{{order.maleyet}}/{{order.modifiedorder[0].changedmale||order.originorder.male}} 男</text>
+            <text class='blank'>{{order.femaleyet}}/{{order.modifiedorder[0].changedfemale||order.originorder.female}} 女</text>
+          </view>
+        </view>
+
+      </view>
+      <wux-white-space body-style='height:20rpx' />
+      <view class='card_line_3'>
+        <text>薪资</text>
+        <text>{{order.postorder.salary}}元/小时</text>
+      </view>
+      <wux-white-space body-style='height:20rpx' />
+      <view class='card_line_4'>
+        <wux-button type='main' bind:click="jumpToPt">
+          <view class='text_btn'>分享给PT</view>
+        </wux-button>
+      </view>
+    </view>
+
+    <view class='info'>
+      <wux-divider show-text="{{ false }}" />
+      <view class='hotel_info'>酒店信息</view>
+      <wux-cell thumb="/images/hotel-company.png" title="{{order.hotel.hotelname}}" hover-class="none"></wux-cell>
+      <wux-cell thumb="/images/hotel-location.png" title="{{order.hotel.hoteladdress}}" hover-class="none"></wux-cell>
+      <wux-cell thumb="/images/hotel-phone.png" title="{{order.hotel.hotelphone}}" hover-class="none"></wux-cell>
+
+      <wux-divider show-text="{{ false }}" />
+      <view class='hotel_info'>工作要求</view>
+      <view class='hotel-info_item n200'>
+        <text>{{order.postorder.attention}}</text>
+      </view>
+      <wux-white-space body-style='height:30rpx' />
+      <view class='hotel_info'>工作简介</view>
+      <view class='hotel-info_item n200'>
+        <text>{{order.postorder.workcontent}}</text>
+      </view>
+
+      <wux-divider show-text="{{ false }}" />
+      <view class='hotel_info'>酒店简介</view>
+      <view class='hotel-intro n200'>{{order.hotel.hotelintroduction}}</view>
+
+      <wux-divider show-text="{{ false }}" />
+      <view class='hotel_info'>人力资源公司简介</view>
+      <wux-cell thumb="/images/hotel-company.png" title="{{order.adviser.companyname}}" hover-class="none"></wux-cell>
+      <view class='hotel_phone'>
+        <wux-cell thumb="/images/hotel-adviser.png" title="{{order.adviser.name}}" hover-class="none" />
+        <image class='hotel_phone_img' src='/images/order-phone.png' bindtap='doCall' />
+      </view>
+      <view class='hotel-intro n200'>{{order.adviser.introduction}}</view>
+    </view>
+
+  </view>
+  <wux-white-space body-style='height:100rpx' />
+</view>

@@ -1,0 +1,86 @@
+<!--pages/h2-order/list-order-detail/list-order-detail.wxml-->
+<view class='page'>
+  <view class='page_bd'>
+    <wux-row>
+      <view class='top_card'>
+        <view class='top_card_top'>
+          <image src='{{avatar}}' />
+          <view>{{order_info.originorder.occupation}}</view>
+        </view>
+        <view class='modified text_min' wx:if="{{order_info.modifiedorder.length>0}}">
+          <wux-white-space body-style="height:10rpx" />
+          <view class='top_card_cen'>
+            <view>
+              <text>{{order_info.originorder.date}}</text>
+              <text class='blank-l'>{{order_info.originorder.time}}</text>
+            </view>
+            <view wx:if="{{order_info.originorder.mode===0}}">
+              <text>{{order_info.countyet}}/{{order_info.originorder.count}}</text>
+            </view>
+            <view wx:else>
+              <text>{{order_info.maleyet}}/{{order_info.originorder.male}} 男</text>
+              <text class='blank-l'>{{order_info.femaleyet}}/{{order_info.originorder.female}} 女</text>
+            </view>
+            <view class='top_card_cen_bd' />
+          </view>
+        </view>
+        <wux-white-space body-style="height:20rpx" />
+        <view class='top_card_cen text_min'>
+          <view>
+            <text>{{order_info.modifiedorder[0].date||order_info.originorder.date}}</text>
+            <text class='blank-l'>{{order_info.modifiedorder[0].time||order_info.originorder.time}}</text>
+          </view>
+          <view wx:if="{{order_info.modifiedorder.length>0?(order_info.modifiedorder[0].changedmode===0):(order_info.originorder.mode===0)}}">
+            <text>{{order_info.countyet}}/{{order_info.modifiedorder[0].changedcount||order_info.originorder.count}}</text>
+          </view>
+          <view wx:else>
+            <text>{{order_info.maleyet}}/{{order_info.modifiedorder[0].changedmale||order_info.originorder.male}} 男</text>
+            <text class='blank-l'>{{order_info.femaleyet}}/{{order_info.modifiedorder[0].changedfemale||order_info.originorder.female}} 女</text>
+          </view>
+        </view>
+        <wux-white-space body-style="height:20rpx" />
+        <view class='top_card_btm'>
+          <view class='top_card_btm_name'>{{order_info.hotel.hotelname}}</view>
+          <view>{{order_info.postorder.salary}}元/小时</view>
+        </view>
+      </view>
+    </wux-row>
+
+    <!-- search bar -->
+    <wux-row>
+      <view class='search_bar'>
+        <view class='search n200'>
+          <input confirm-type='search' placeholder='输入姓名搜索' placeholder-class='search_p' bindconfirm='doSearchName' bindinput='doSearchName' />
+        </view>
+      </view>
+    </wux-row>
+
+    <!-- 已报名 -->
+    <block wx:for="{{pt_list}}" wx:key="">
+      <wux-white-space body-style="height:30rpx" />
+      <wux-row>
+        <view class='list'>
+          <view class='list_card'>
+            <view class='list_card_top'>
+              <view class='list_card_l'>
+                <image class='list_card_avatar' src='{{avatar}}' />
+                <view class='list_card_r'>
+                  <view class='list_card_l_top'>
+                    <text class='list_card_l_top_name'>{{item.name||'name'}}</text>
+                    <text>{{item.gender===1?'男':'女'}}</text>
+                  </view>
+                  <wux-white-space body-style="height:10rpx" />
+                  <view class='list_card_l_btm text_min n200'>
+                    <text class='list_card_l_btm_age'>{{item.height||0}} cm {{item.weight||0}} kg</text>
+                  </view>
+                </view>
+              </view>
+              <view />
+            </view>
+          </view>
+        </view>
+      </wux-row>
+    </block>
+
+  </view>
+</view>

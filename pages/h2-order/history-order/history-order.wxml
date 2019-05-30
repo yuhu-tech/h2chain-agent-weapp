@@ -1,0 +1,60 @@
+<!--pages/h2-order/history-order/history-order.wxml-->
+<view class='page'>
+  <view class='page_bd'>
+
+    <wux-row>
+      <picker mode="date" value="{{date}}" bindchange="bindDateChange">
+        <view class='picker'>
+          <view />
+          <view>{{date?date:'选择用工日期'}}</view>
+          <view class='arrow'>
+            <wux-icon type='md-arrow-dropdown' />
+          </view>
+        </view>
+      </picker>
+    </wux-row>
+    <wux-white-space body-style="height:30rpx" />
+
+    <block wx:for="{{order_list}}" wx:key="">
+      <view class='card' bindtap='goDetail' data-orderid='{{item.originorder.orderid}}'>
+        <view class='card_p_hd'>
+          <view class='card_p_hd_img'>
+            <image src='{{item.avatar}}' />
+            <view class='card_hd_job'>{{item.originorder.occupation||'职位'}}</view>
+          </view>
+          <view class='card_p_hd_link b200'>
+            <text class='card_p_hd_link_text'>订单详情</text>
+            <wux-icon type="ios-arrow-forward" size='20' />
+          </view>
+        </view>
+
+        <view class='card_p_bd'>
+          <view class='card_p_bd_date'>
+            <view>
+              <text class='card_bd_date'>{{item.modifiedorder[0].date||item.originorder.date||'YYYY-MM-DD'}}</text>
+              <text>{{item.modifiedorder[0].time||item.originorder.time||'hh-mm-ss'}}</text>
+            </view>
+          </view>
+          <wux-white-space body-style="height:20rpx" />
+          <view class='card_p_bd_count'>
+            <view wx:if="{{item.modifiedorder.length>0?(item.modifiedorder[0].changedmode===0):(item.originorder.mode===0)}}">
+              <text>人数 {{item.countyet||0}}/{{item.modifiedorder[0].changedcount||item.originorder.count||0}}</text>
+            </view>
+            <view wx:else>
+              <text class='card_count_isSex'>男 {{item.maleyet||0}}/{{item.modifiedorder[0].changedmale||item.originorder.male||0}}</text>
+              <text>女 {{item.femaleyet||0}}/{{item.modifiedorder[0].changedfemale||item.originorder.female||0}}</text>
+            </view>
+          </view>
+          <wux-white-space body-style="height:20rpx" />
+          <view class='card_p_bd_salary'>
+            <text>{{item.postorder.salary}}元/小时</text>
+            <text class='n200'>{{item.hotel.hotelname||'hotelname'}}</text>
+          </view>
+        </view>
+
+      </view>
+      <wux-white-space body-style="height:30rpx" />
+    </block>
+
+  </view>
+</view>

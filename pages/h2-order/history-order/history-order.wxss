@@ -1,0 +1,91 @@
+/* pages/h2-order/history-order/history-order.wxss */
+
+page {
+  padding: 30rpx 30rpx 150rpx;
+  background-color: #f8f8f8;
+}
+
+/* picker */
+
+.picker {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #c8c8c8;
+  background-color: #ececec;
+  border-radius: 10rpx;
+  padding: 0 20rpx;
+}
+
+/* card */
+
+.card {
+  border-radius: 10rpx;
+  background-color: #fff;
+  box-shadow: 0 0 20rpx rgba(200, 200, 200, 0.5);
+}
+
+/* card_p_hd */
+
+.card_p_hd {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+}
+
+.card_p_hd_img {
+  display: flex;
+  align-items: center;
+}
+
+.card_p_hd image {
+  height: 50rpx;
+  width: 50rpx;
+  border-radius: 10%;
+  margin-right: 30rpx;
+}
+
+.card_p_hd_link {
+  display: flex;
+  align-items: center;
+}
+
+.card_p_hd_link_text {
+  margin-right: 30rpx;
+}
+
+/* card_p_bd */
+
+.card_bd_date {
+  margin-right: 20rpx;
+}
+
+.card_p_bd {
+  display: flex;
+  flex-direction: column;
+  padding: 20rpx;
+  border-top: solid 1rpx #eee;
+  border-bottom: solid 1rpx #eee;
+}
+
+.card_p_bd_date {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card_p_bd_count {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card_count_isSex {
+  margin-right: 30rpx;
+}
+
+.card_p_bd_salary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

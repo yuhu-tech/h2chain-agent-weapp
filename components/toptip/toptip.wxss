@@ -1,0 +1,41 @@
+/* components/toptip.wxss */
+
+.toptip {
+  background: #ff5757;
+  color: #fff;
+  height: 50rpx;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: -50rpx;
+  z-index: 999;
+}
+
+.toptip view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+@keyframes show {
+  0% {
+    top: -50rpx;
+  }
+
+  20% {
+    top: 0rpx;
+  }
+
+  80% {
+    top: 0rpx;
+  }
+
+  100% {
+    top: -50rpx;
+  }
+}
+
+.show {
+  animation: show 2s ease;
+}

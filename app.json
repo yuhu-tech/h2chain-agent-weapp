@@ -1,0 +1,39 @@
+{
+  "pages": [
+    "pages/h2-order/list-order/list-order",
+    "pages/h2-account/auth/auth",
+    "pages/h2-account/home/home",
+    "pages/h2-account/version/version",
+    "pages/h2-order/list-order-info/list-order-info",
+    "pages/h2-order/list-order-detail/list-order-detail",
+    "pages/h2-order/history-order/history-order",
+    "pages/h2-order/history-order-detail/history-order-detail",
+    "pages/h2-order/share/share"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "H2代理",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "custom": true,
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/h2-order/list-order/list-order"
+      },
+      {
+        "pagePath": "pages/h2-account/home/home"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "sitemapLocation": "sitemap.json",
+  "navigateToMiniProgramAppIdList": [
+    "wx0f2ab26c0f65377d"
+  ]
+}

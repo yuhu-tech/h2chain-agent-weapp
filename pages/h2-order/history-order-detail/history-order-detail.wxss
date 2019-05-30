@@ -1,0 +1,230 @@
+/* pages/h2-order/history-order-detail/history-order-detail.wxss */
+
+page {
+  background-color: #f5f5f5;
+}
+
+/* card */
+
+.top_card {
+  padding: 30rpx 40rpx;
+  background-color: #fff;
+}
+
+.top_card_top {
+  display: flex;
+  align-items: center;
+  padding-bottom: 20rpx;
+  border-bottom: solid 1rpx rgba(200, 200, 200, 0.1);
+}
+
+.top_card_top image {
+  margin-right: 30rpx;
+  border-radius: 10%;
+  height: 60rpx;
+  width: 60rpx;
+}
+
+.top_card_cen {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.top_card_cen_bd {
+  width: 100%;
+  position: absolute;
+  top: 45%;
+  border-bottom: solid 1rpx #c8c8c8;
+}
+
+.blank {
+  margin-left: 20rpx;
+}
+
+.top_card_btm {
+  display: flex;
+  justify-content: space-between;
+}
+
+.top_card_btm_name {
+  padding-right: 30rpx;
+  border-right: solid 1rpx #eee;
+}
+
+.img_phone {
+  height: 30rpx;
+  width: 30rpx;
+}
+
+/* tool bar */
+
+.search_bar {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* picker */
+
+.picker {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #c8c8c8;
+  background-color: #ececec;
+  border-radius: 10rpx;
+  height: 80rpx;
+  width: 325rpx;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+
+/* search */
+
+.search {
+  padding: 30rpx;
+  /* width: 325rpx; */
+  width: 100%;
+}
+
+.search_p {
+  text-align: center;
+}
+
+input {
+  background-color: #ececec;
+  padding: 10rpx 20rpx;
+  height: 80rpx;
+  border-radius: 10rpx;
+  text-align: center;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.arrow {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+}
+
+/* list */
+
+.list {
+  padding: 0 30rpx;
+}
+
+.list_card {
+  background-color: #fff;
+  border-radius: 5rpx;
+}
+
+.list_card_top {
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 30rpx;
+  border-bottom: solid 1rpx #eee;
+}
+
+.list_card_avatar {
+  height: 90rpx;
+  width: 90rpx;
+  border-radius: 10%;
+  margin-right: 20rpx;
+}
+
+.list_card_l_top {
+  display: flex;
+  align-items: center;
+}
+
+.list_card_l_top image {
+  height: 40rpx;
+  width: 40rpx;
+  margin-right: 10rpx;
+}
+
+.list_card_l_top_name {
+  padding-right: 20rpx;
+  margin-right: 20rpx;
+  border-right: solid 1rpx #eee;
+}
+
+.list_card_l_top_name_phone {
+  display: flex;
+  align-items: center;
+}
+
+.list_card_l_btm {
+  display: flex;
+  align-items: center;
+}
+
+.list_card_l_btm_blank {
+  margin-left: 30rpx;
+}
+
+.list_card_l, .list_card_r {
+  display: flex;
+  align-items: center;
+}
+
+.link_arrow {
+  height: 100rpx;
+  width: 100rpx;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* card btm */
+
+.list_card_btm {
+  padding: 30rpx;
+}
+
+.list_card_btm_top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.list_card_btm_btm_btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.wux-button {
+  height: 50rpx;
+}
+
+.list_card_btm_btm_remark {
+  display: flex;
+  justify-content: space-between;
+}
+
+.list_card_btm_btm_remark_time {
+  margin-right: 20rpx;
+}
+
+.list_card_btm_btm_chain {
+  display: flex;
+  justify-content: flex-end;
+  padding: 30rpx;
+  border-top: solid 1rpx #eee;
+}
+
+.list_card_btm_btm_chain text {
+  width: 400rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* modified */
+
+.modified {
+  color: #c8c8c8;
+}
+
+.none_tip {
+  text-align: center;
+}

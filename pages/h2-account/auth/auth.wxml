@@ -1,0 +1,12 @@
+<!--pages/h2-account/auth/auth.wxml-->
+<view class='page'>
+  <view class='page_bd'>
+    <view class='title b200 text_title'>
+    </view>
+    <view class="dots">
+      <view />
+      <view />
+      <view />
+    </view>
+  </view>
+</view>

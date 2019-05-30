@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "wux-white-space": "wux-weapp/white-space",
+    "wux-cell-group": "wux-weapp/cell-group",
+    "wux-cell": "wux-weapp/cell",
+    "wux-button": "wux-weapp/button",
+    "wux-divider": "wux-weapp/divider"
+  },
+  "navigationBarTitleText": "订单详情"
+}

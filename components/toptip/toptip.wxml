@@ -1,0 +1,4 @@
+<!--components/toptip.wxml-->
+<view class="toptip {{text?'show':''}}">
+  <view>{{text}}</view>
+</view>
