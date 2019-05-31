@@ -10,7 +10,6 @@ var gql = GraphQL({
   //设置全局动态header
   header: function () {
     let token = wx.getStorageSync('token')
-
     return {
       "Authorization": "Bearer " + token
     }

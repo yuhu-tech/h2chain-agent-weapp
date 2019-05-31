@@ -38,17 +38,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    wx.setStorageSync('share', 'done')
     gql.query({
       query: `query{
         search(
           orderid:"${this.data.orderid}"
+          state:21
         ){
-          adviser{
-            companyname
-            name
-            phone
-            introduction
-          }
           originorder{
             orderid
             occupation
@@ -86,6 +82,10 @@ Page({
       }`
     }).then((res) => {
       console.log('success', res);
+      wx.showToast({
+        title: '处理中',
+        icon: 'loading'
+      })
       let avatar = util.selectAvatar(res.search[0].originorder.occupation)
       util.formatItemOrigin(res.search[0])
       if (res.search[0].modifiedorder.length > 0) {
@@ -96,6 +96,7 @@ Page({
       this.setData({
         order: res.search[0]
       })
+      wx.hideToast()
     }).catch((error) => {
       console.log('fail', error);
       wx.showToast({

@@ -31,7 +31,33 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    this.doLogin()
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo'] && wx.getStorageSync('token')) {
+          /* adviser */
+          if (this.data.options.adviser) {
+            console.log('check adviser')
+            wx.navigateTo({
+              url: `/pages/h2-order/share/share?orderid=${this.data.options.orderid}`,
+            })
+            return
+          }
+          /* share */
+          if (this.data.options.share && this.data.options.share === 'share') {
+            console.log('check share')
+            wx.setStorageSync('share', 'share')
+            wx.setStorageSync('orderid', this.data.options.orderid)
+            wx.switchTab({
+              url: `/pages/h2-order/list-order/list-order`,
+            })
+            return
+          }
+          wx.switchTab({
+            url: `/pages/h2-order/list-order/list-order`,
+          })
+        }
+      }
+    })
   },
 
   /**
@@ -84,13 +110,19 @@ Page({
     });
   },
 
-  doLogin: function() {
+  doLogin: function(e) {
     wx.login({
       success: (res_login) => {
+        wx.getUserInfo({
+          success: res_info => {
+
+          }
+        })
         gql.mutate({
           mutation: `mutation {
             login(
-              jscode:"${res_login.code}"
+              jscode: "${res_login.code}"
+              nickname: "${e.detail.userInfo.nickName}"
             ){
               token
             }
@@ -105,16 +137,21 @@ Page({
             wx.navigateTo({
               url: `/pages/h2-order/share/share?orderid=${this.data.options.orderid}`,
             })
+            return
           }
           /* share */
-          if (this.data.options.share) {
+          if (this.data.options.share && this.data.options.share === 'share') {
             console.log('check share')
             wx.setStorageSync('share', 'share')
             wx.setStorageSync('orderid', this.data.options.orderid)
             wx.switchTab({
               url: `/pages/h2-order/list-order/list-order`,
             })
+            return
           }
+          wx.switchTab({
+            url: `/pages/h2-order/list-order/list-order`,
+          })
         }).catch((error) => {
           console.log('fail', error);
         });

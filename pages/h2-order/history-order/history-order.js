@@ -66,6 +66,13 @@ Page({
         }
       }`
     }).then((res) => {
+      if (!res.search) {
+        wx.showToast({
+          title: '暂无订单',
+          icon: 'none'
+        })
+        return
+      }
       for (let item of res.search) {
         item.avatar = util.selectAvatar(item.originorder.occupation)
         util.formatItemOrigin(item)
@@ -144,6 +151,15 @@ Page({
         }
       }`
     }).then((res) => {
+      wx.hideNavigationBarLoading();
+      wx.stopPullDownRefresh();
+      if (!res.search) {
+        wx.showToast({
+          title: '暂无订单',
+          icon: 'none'
+        })
+        return
+      }
       for (let item of res.search) {
         item.avatar = util.selectAvatar(item.originorder.occupation)
         util.formatItemOrigin(item)
@@ -155,8 +171,6 @@ Page({
       this.setData({
         order_list: res.search
       })
-      wx.hideNavigationBarLoading();
-      wx.stopPullDownRefresh();
     }).catch((error) => {
       console.log('fail', error);
       wx.showToast({
@@ -222,6 +236,13 @@ Page({
         }
       }`
     }).then((res) => {
+      if (!res.search) {
+        wx.showToast({
+          title: '暂无订单',
+          icon: 'none'
+        })
+        return
+      }
       for (let item of res.search) {
         item.avatar = util.selectAvatar(item.originorder.occupation)
         util.formatItemOrigin(item)

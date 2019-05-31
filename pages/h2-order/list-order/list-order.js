@@ -9,7 +9,7 @@ Page({
    */
   data: {
     date: '',
-    order_list: [{}]
+    order_list: []
   },
 
   /**
@@ -85,7 +85,7 @@ Page({
       }`
     }).then((res) => {
       console.log('success', res);
-      if (res.search.length === 0) {
+      if (!res.search) {
         wx.showToast({
           title: '暂无订单',
           icon: 'none'
@@ -170,14 +170,17 @@ Page({
       }`
     }).then((res) => {
       console.log('success', res);
-      let tempWait = []
-      let tempIng = []
-      if (res.search.length === 0) {
+      wx.hideNavigationBarLoading();
+      wx.stopPullDownRefresh();
+      if (!res.search) {
         wx.showToast({
           title: '暂无订单',
           icon: 'none'
         })
+        return
       }
+      let tempWait = []
+      let tempIng = []
       for (let item of res.search) {
         item.avatar = util.selectAvatar(item.originorder.occupation)
         util.formatItemOrigin(item)
@@ -194,8 +197,6 @@ Page({
         order_list_wait: tempWait,
         order_list_ing: tempIng
       })
-      wx.hideNavigationBarLoading();
-      wx.stopPullDownRefresh();
     }).catch((error) => {
       console.log('fail', error);
       wx.showToast({
@@ -264,6 +265,13 @@ Page({
       }`
     }).then((res) => {
       console.log('success', res);
+      if (!res.search) {
+        wx.showToast({
+          title: '暂无订单',
+          icon: 'none'
+        })
+        return
+      }
       let tempWait = []
       let tempIng = []
       for (let item of res.search) {
@@ -308,18 +316,18 @@ Page({
     wx.navigateToMiniProgram({
       appId: 'wx0f2ab26c0f65377d',
       envVersion: 'trial',
-      path: `/pages/h2-account/auth/auth?agent=agent&inviterid=${agentId}&orderid=${e.currentTarget.dataset.orderid}`,
+      path: `/pages/h2-account/auth/auth?agent=agent&agentid=${agentId}&orderid=${e.currentTarget.dataset.orderid}`,
       complete: res => {
         console.log(res)
         /* bind order */
         gql.mutate({
           mutation: `mutation{
             transmit(
-              orderid:${e.currentTarget.dataset.orderid}
+              orderid:"${e.currentTarget.dataset.orderid}"
             )
           }`
         }).then((res) => {
-          console.log('success', res);
+          console.log('bind success', res);
         }).catch((error) => {
           console.log('fail', error);
         });

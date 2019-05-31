@@ -40,12 +40,12 @@ Page({
       query: `query{
         search(
           orderid:"${this.data.orderid}"
+          state:21
         ){
           adviser{
             companyname
             name
             phone
-            introduction
           }
           originorder{
             orderid
@@ -84,6 +84,10 @@ Page({
       }`
     }).then((res) => {
       console.log('success', res);
+      wx.showToast({
+        title: '处理中',
+        icon: 'loading'
+      })
       let avatar = util.selectAvatar(res.search[0].originorder.occupation)
       util.formatItemOrigin(res.search[0])
       if (res.search[0].modifiedorder.length > 0) {
@@ -92,8 +96,10 @@ Page({
       res.search[0].postorder.workcontent = decodeURI(res.search[0].postorder.workcontent)
       res.search[0].postorder.attention = decodeURI(res.search[0].postorder.attention)
       this.setData({
-        order: res.search[0]
+        order: res.search[0],
+        avatar: avatar
       })
+      wx.hideToast()
     }).catch((error) => {
       console.log('fail', error);
       wx.showToast({
@@ -149,18 +155,18 @@ Page({
     wx.navigateToMiniProgram({
       appId: 'wx0f2ab26c0f65377d',
       envVersion: 'trial',
-      path: `/pages/h2-account/auth/auth?agent=agent&inviterid=${agentId}&orderid=${this.data.orderid}`,
+      path: `/pages/h2-account/auth/auth?agent=agent&agentid=${agentId}&orderid=${this.data.orderid}`,
       complete: res => {
         console.log(res)
         /* bind order */
         gql.mutate({
           mutation: `mutation{
             transmit(
-              orderid:${this.data.orderid}
+              orderid: "${this.data.orderid}"
             )
           }`
         }).then((res) => {
-          console.log('success', res);
+          console.log('bind success', res);
         }).catch((error) => {
           console.log('fail', error);
         });
