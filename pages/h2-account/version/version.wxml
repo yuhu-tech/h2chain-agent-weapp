@@ -1,0 +1,9 @@
+<!--pages/h2-account/version/version.wxml-->
+<view class='page'>
+  <view class='block'>H2Chain</view>
+  <view class='version'>当前版本：V1.0.0</view>
+  <view class='intro'>
+    <view class='intro_title'>版本介绍</view>
+    <view class='intro_content'>here is a long paragraph of introductionhere is a long paragraph of introductionhere is a long paragraph of introductionhere is a long paragraph of introductionhere is a long paragraph of introductionhere is a long paragraph of introduction</view>
+  </view>
+</view>

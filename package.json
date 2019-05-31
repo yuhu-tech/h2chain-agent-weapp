@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "wux-weapp": "^3.5.0",
+    "wxapp-graphql": "^0.0.4"
+  }
+}

@@ -1,0 +1,17 @@
+<!--components/guide/guide.wxml-->
+<!-- 组件遮罩引导 -->
+<view class='mask-box' wx:if='{{isShow===true}}' catchtouchmove="noMove">
+  <view class='mask'>
+    <view class='cont'>
+      <wux-white-space body-style="height:150rpx" />
+      <wux-icon wux-class='icon' type="ios-arrow-up" size='20' />
+      <wux-icon wux-class='icon' type="ios-arrow-up" size='20' />
+      <wux-icon wux-class='icon' type="ios-arrow-up" size='20' />
+      <view>您可以通过下拉本页，重置筛选条件</view>
+      <wux-white-space body-style="height:50rpx" />
+      <wux-button type='main' wux-class='mask_btn' bind:click='hideMask'>
+        <view class='text_btn'>我知道了</view>
+      </wux-button>
+    </view>
+  </view>
+</view>

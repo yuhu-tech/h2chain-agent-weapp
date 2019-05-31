@@ -1,0 +1,31 @@
+/* pages/h2-account/auth/auth.wxss */
+
+page, .page, .page_bd {
+  height: 100%;
+}
+
+.page_bd {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: -150rpx;
+}
+
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #50d9e3;
+  color: #fff;
+  font-size: 30rpx;
+}
+
+button::after {
+  border: none;
+}
+
+.button-hover {
+  color: #fff;
+  background: #50d9e3;
+}

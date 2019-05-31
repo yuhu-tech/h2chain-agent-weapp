@@ -1,0 +1,26 @@
+<!--pages/h2-account/home/home.wxml-->
+<view class="page">
+  <view class="page__hd">
+    <view class="page__title"></view>
+    <view class="page__desc"></view>
+  </view>
+  <view class="page__bd">
+    <wux-row>
+      <navigator class='info_card' url='/pages/h2-account/person-info/person-info'>
+        <open-data type="userNickName" />
+        <view class='avatar'>
+          <open-data type="userAvatarUrl" />
+        </view>
+      </navigator>
+    </wux-row>
+    <wux-white-space body-style='height:15rpx' />
+    <wux-row>
+      <wux-cell-group>
+        <wux-cell thumb="/images/home-history.png" title="招聘历史" isLink url="/pages/h2-order/history-order/history-order" />
+        <view class='bd_btm' />
+        <wux-cell thumb="/images/home-psw.png" title="版本信息" isLink url="/pages/h2-account/version/version" />
+        <view class='bd_btm' />
+      </wux-cell-group>
+    </wux-row>
+  </view>
+</view>

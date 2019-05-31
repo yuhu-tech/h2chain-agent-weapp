@@ -1,0 +1,33 @@
+/* pages/h2-account/version/version.wxss */
+
+.page {
+  padding: 20rpx 40rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.block {
+  padding: 10rpx 60rpx;
+  background-color: #50d9e3;
+  color: #fff;
+  font-size: 40rpx;
+}
+
+.version {
+  margin-top: 10rpx;
+  padding: 10rpx;
+}
+
+.intro {
+  margin-top: 10rpx;
+}
+
+.intro_title {
+  font-size: 36rpx;
+}
+
+.intro_content {
+  padding: 15rpx 30rpx;
+}

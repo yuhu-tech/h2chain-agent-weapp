@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "wux-row": "wux-weapp/row",
+    "wux-white-space": "wux-weapp/white-space",
+    "wux-cell-group": "wux-weapp/cell-group",
+    "wux-cell": "wux-weapp/cell"
+  },
+  "navigationBarTitleText": "个人中心"
+}

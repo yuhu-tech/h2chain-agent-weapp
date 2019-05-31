@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "wux-button": "wux-weapp/button",
+    "wux-white-space": "wux-weapp/white-space"
+  },
+  "navigationBarTitleText": "分享订单"
+}

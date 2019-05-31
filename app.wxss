@@ -1,0 +1,106 @@
+/**app.wxss**/
+
+page {
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 30rpx;
+  word-wrap: break-word;
+}
+
+.y200 {
+  color: #fecb91;
+}
+
+.y100 {
+  color: #dcc494;
+}
+
+.n200 {
+  color: #c8c8c8;
+}
+
+.n96 {
+  color: #969696;
+}
+
+.r200 {
+  color: #ff482c;
+}
+
+.b200 {
+  color: #50d9e3;
+}
+
+.text_title {
+  font-size: 20pt;
+}
+
+.text_tip {
+  font-size: 14pt;
+}
+
+.text_min {
+  font-size: 10pt;
+}
+
+/* ----------wux---------- */
+
+.wux-button {
+  min-height: 70rpx !important;
+  line-height: normal !important;
+  height: 70rpx;
+}
+
+.text_btn {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wux-button--main {
+  background-color: #50d9e3 !important;
+  color: #fff !important;
+}
+
+.wux-button--main.wux-button--outline,
+.wux-button--main.wux-button--outline.wux-button--disabled {
+  border-color: #50d9e3 !important;
+  background-color: transparent !important;
+  color: #50d9e3 !important;
+}
+
+.wux-button--main.wux-button--hover {
+  background-color: #00c1cf !important;
+  color: #fff !important;
+  border-color: #00c1cf;
+}
+
+.input-placeholder {
+  color: #c8c8c8;
+}
+
+.form_button {
+  height: 70rpx;
+  font-size: 30rpx;
+  background-color: #50d9e3 !important;
+  color: #fff !important;
+  margin: 0;
+}
+
+.form_button_hover {
+  background-color: #00c1cf !important;
+  border-color: #00c1cf;
+  color: #fff !important;
+}
+
+button[disabled] {
+  background-color: #50d9e3 !important;
+  border-color: #50d9e3;
+  opacity: 0.4;
+  color: #fff !important;
+}
+
+.form_button::after {
+  border-color: #50d9e3;
+}

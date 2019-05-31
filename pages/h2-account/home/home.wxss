@@ -1,0 +1,50 @@
+/* pages/h2-account/home/home.wxss */
+
+.info_card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 200rpx;
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+
+.avatar {
+  height: 140rpx;
+  width: 140rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.wux-whitespace {
+  background-color: #f8f8f8;
+}
+
+.logout {
+  text-align: center;
+  margin: 20rpx 0 150rpx;
+}
+
+.wux-cell-group__bd {
+  margin: 20rpx 0 !important;
+}
+
+.wux-cell-group__bd:after {
+  border: none !important;
+}
+
+.wux-cell {
+  padding: 25rpx !important;
+}
+
+.wux-cell::after {
+  border-bottom: none !important;
+}
+
+.wux-cell__thumb {
+  margin-right: 20rpx !important;
+}
+
+.bd_btm {
+  border-bottom: solid 1rpx #f8f8f8;
+}

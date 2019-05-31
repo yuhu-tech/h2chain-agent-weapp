@@ -1,0 +1,11 @@
+<!--pages/h2-account/auth/auth.wxml-->
+<view class='page'>
+  <view class='page_bd'>
+    <!-- <view class="dots">
+      <view />
+      <view />
+      <view />
+    </view> -->
+    <button open-type="getUserInfo" bindgetuserinfo="doLogin">微信授权以登录</button>
+  </view>
+</view>

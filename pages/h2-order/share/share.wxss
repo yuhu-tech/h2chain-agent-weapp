@@ -1,0 +1,92 @@
+/* pages/h2-order/share/share.wxss */
+
+page {
+  height: 100%;
+}
+
+/* page */
+
+.page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+swiper {
+  height: 400rpx;
+}
+
+.slide-image {
+  width: 100%;
+}
+
+/* card */
+
+.card {
+  padding: 30rpx;
+}
+
+.card_line_1 {
+  display: flex;
+  align-items: center;
+}
+
+.card_line_1 image {
+  height: 80rpx;
+  width: 80rpx;
+  border-radius: 5%;
+  margin-right: 30rpx;
+}
+
+.card_line_2, .card_line_3 {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.card_line_2_l {
+  margin-right: 20rpx;
+}
+
+.top_card_cen_bd {
+  width: 100%;
+  position: absolute;
+  top: 45%;
+  border-bottom: solid 1rpx #c8c8c8;
+}
+
+/* n200 */
+
+.n200 {
+  color: #969696;
+}
+
+/* text_btn */
+
+.text_btn {
+  width: 160rpx;
+}
+
+/* blank */
+
+.blank {
+  margin-left: 20rpx;
+}
+
+/* page_ft */
+
+.page_ft {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.wux-button {
+  width: 500rpx;
+}
+
+.text_btn {
+  width: 100%;
+}
